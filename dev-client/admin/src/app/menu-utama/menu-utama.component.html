@@ -1,0 +1,18 @@
+<div class="ui very padded inverted segment basic" id="menu-set-padding">
+	<div class="ui inverted secondary menu">
+		<div class="item"> Branding & Strategy </div>
+		<a class="item" routerLink="/menu-utama/model"  routerLinkActive="active"> Model </a>
+		<a class="item" routerLink="/menu-utama/bahan"  routerLinkActive="active"> Bahan </a>
+		<a class="item" routerLink="/menu-utama/harga-bahan"  routerLinkActive="active"> Harga Bahan </a>
+		<a class="item" routerLink="/menu-utama/pesanan"  routerLinkActive="active"> Pesanan </a>
+
+		<div class="right menu">
+			<div class="item"> </div>
+			<a class="item" (click)="logout()"> Logout </a>
+		</div>
+	</div>
+</div>
+
+<div class="ui very padded basic segment" id="content-segment">
+	<router-outlet></router-outlet>
+</div>

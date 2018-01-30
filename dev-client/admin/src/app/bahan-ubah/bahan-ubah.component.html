@@ -1,0 +1,50 @@
+<div class="ui basic segment" id="header-reset">
+	<div class="ui stackable equal width grid middle aligned">
+		<div class="column">
+			<h3 class="ui header">
+				<div class="content">
+					Bahan / Ubah Data Bahan
+					<div class="sub header"> <i> Ubah data bahan/texture </i> </div>
+				</div>
+			</h3>
+		</div>
+		<div class="column">
+			<a class="ui black button right floated small" style="visibility: hidden;"> Tambah Data Baru </a>
+		</div>
+	</div>
+</div>
+
+<div class="ui segment">
+	<form id="form-ubah-data-bahan" class="ui form" onsubmit="return false;" (ngSubmit)="simpan()"> 
+		<div class="ui three column grid stackable">
+			<div class="column">
+				<h4 class="ui header"> Data Bahan </h4>
+				<div class="ui divider"></div>
+				<div class="field readonly">
+					<label> ID Bahan </label>
+					<input type="text" name="idBahan" placeholder="ID Bahan" readonly="" autocomplete="off">
+				</div>
+				<div class="field">
+					<label> Nama Bahan </label>
+					<input type="text" name="namaBahan" placeholder="Nama Bahan" autocomplete="off">
+				</div>
+				<div class="field">
+					<label> Keterangan </label>
+					<textarea rows="4" name="keteranganBahan" placeholder="Keterangan" autocomplete="off"></textarea>
+				</div>
+				<div class="field">
+					<label> Gambar </label>
+					<input type="file" name="gambarBahan" #fileGambar>
+				</div>
+				<button style="visibility: hidden; display: none;" id="button-simpan">asdf</button>
+				<div class="ui error message" id="hidden-message"></div>
+			</div>
+		</div>
+	</form>
+
+	<div class="ui basic segment" style="padding-left: 0; padding-right: 0;">
+		<!-- <div class="ui divider"></div> -->
+		<div class="ui black button" id="simpan-ubah-data-bahan"> Simpan </div>
+		<div class="ui black button" routerLink="/menu-utama/bahan"> Kembali </div>
+	</div>
+</div>

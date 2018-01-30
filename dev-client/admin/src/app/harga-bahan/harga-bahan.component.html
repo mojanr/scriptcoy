@@ -1,0 +1,75 @@
+<div class="ui basic segment" id="header-reset">
+	<div class="ui stackable equal width grid middle aligned">
+		<div class="column">
+			<h3 class="ui header">
+				<div class="content">
+					Harga Bahan
+					<div class="sub header"> <i> Data harga bahan/texture bagian gitar </i> </div>
+				</div>
+			</h3>
+		</div>
+		<div class="column">
+			<a class="ui black button right floated small" routerLink="/menu-utama/harga-bahan/tambah-data"> Tambah Data Baru </a>
+		</div>
+	</div>
+</div>
+
+<div class="ui segment">
+	<div class="ui transparent left icon input fluid large" id="cari-data">
+		<input type="text" placeholder="Cari data ..." [ngModel]="dataCari" (ngModelChange)="cariData($event)">
+		<i class="search link icon"></i>
+	</div>
+</div>
+
+<div class="ui segment">
+	<table class="ui basic selectable small table">
+		<thead>
+			<tr>
+				<th class="one wide"> ID </th>
+				<th class="three wide"> Nama Bagian </th>
+				<th class="two wide"> Nama Bahan </th>
+				<th class="two wide"> Harga </th>
+				<th class="center aligned two wide"> Action </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngIf="data.length == 0">
+				<td colspan="6" class="center aligned">
+					<div class="ui basic segment">
+						<h4 class="ui header"> Tidak ada data yang dapat ditemukan pada database! </h4>
+					</div>
+				</td>
+			</tr>
+		
+			<tr *ngFor="let item of data">
+				<td> {{ item.idHargaBahan }} </td>
+				<td> {{ item.bagianGitar }} </td>
+				<td> <img class="ui mini image circular" [src]="item.gambarBahan" style="display: inline-block;"> &nbsp; {{ item.namaBahan }} </td>
+				<td> Rp. {{ item.hargaBahan | number:'1.2-2' }} </td>
+				<td class="center aligned">
+					<div class="ui black button small icon circular" routerLink="/menu-utama/harga-bahan/ubah-data/{{item.idHargaBahan}}">
+						<i class="icon edit"></i>
+					</div>
+					<div class="ui black button small icon circular" (click)="modalHapus(item)">
+						<i class="icon trash"></i>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!-- modal hapus data -->
+<div class="ui small modal" id="hapus-data">
+	<div class="header"> 
+		<span> Hapus Data </span>
+	</div>
+	<div class="content">
+		Apakah anda yakin ingin menghapus data ini?
+	</div>
+	<div class="actions">
+		<!-- button simpan data -->
+		<div class="ui black button" (click)="hapusData()" id="button-hapus"> Ya </div>
+		<div class="ui black button cancel"> Tidak </div>
+	</div>
+</div>

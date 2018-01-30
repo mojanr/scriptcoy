@@ -1,0 +1,64 @@
+<div class="ui basic segment" id="header-reset">
+	<div class="ui stackable equal width grid middle aligned">
+		<div class="column">
+			<h3 class="ui header">
+				<div class="content">
+					Pengelola / Ubah Data Pengelola
+					<div class="sub header"> <i> Ubah data pengelola </i> </div>
+				</div>
+			</h3>
+		</div>
+		<div class="column">
+			<a class="ui black button right floated small" style="visibility: hidden;"> Tambah Data Baru </a>
+		</div>
+	</div>
+</div>
+
+<div class="ui segment">
+	<form id="form-ubah-data-pengelola" class="ui form" onsubmit="return false;" (ngSubmit)="simpan()"> 
+		<div class="ui three column grid stackable">
+			<div class="column">
+				<h4 class="ui header"> Data Pengelola </h4>
+				<div class="ui divider"></div>
+				<!-- <div class="field">
+					<label> ID Pengelola </label>
+					<input type="text" name="idPengelola" placeholder="ID Pengelola" readonly="" autocomplete="off">
+				</div> -->
+				<div class="field">
+					<label> Username </label>
+					<input type="text" name="username" placeholder="username" autocomplete="off">
+				</div>
+				<div class="field">
+					<label> Bagian </label>
+					<select class="ui search selection dropdown" name="tipe" id="bagian"> 
+						<option value=""> Tipe </option>
+						<option value="Administrator"> Administrator </option>
+						<option value="Branding And Strategy"> Branding And Strategy </option>
+						<!-- <option value="Luthier"> Luthier </option> -->
+						<!-- <option value="Editor Audio Visual"> Editor Audio Visual </option> -->
+					</select>
+				</div>
+				<div class="field">
+					<label> Nama </label>
+					<input type="text" name="namaPengelola" placeholder="Nama" autocomplete="off">
+				</div>
+			</div>
+			<div class="column">
+				<h4 class="ui header"> Data Akun </h4>
+				<div class="ui divider"></div>
+				<div class="field">
+					<label> Password </label>
+					<input type="text" name="password" placeholder="password" autocomplete="off">
+				</div>
+			</div>
+		</div>
+		<button style="visibility: hidden; display: none;" id="button-simpan"></button>
+		<div class="ui error message" id="hidden-message"></div>
+	</form>
+
+	<div class="ui basic segment" style="padding-left: 0; padding-right: 0;">
+		<!-- <div class="ui divider"></div> -->
+		<div class="ui black button" id="simpan-ubah-data-pengelola"> Simpan </div>
+		<div class="ui black button" routerLink="/menu-utama-administrator/pengelola"> Kembali </div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<div class="ui center aligned middle aligned grid" id="login-container">
+	<div class="column" style="width: 360px;">
+		<div class="ui segment left aligned very padded">
+			<div class="ui padded basic segment center aligned">
+				<h1 class="ui header"> LOGIN </h1>
+			</div>
+
+			<!-- form -->
+			<form id="login-form" class="ui form" onsubmit="return false;" (ngSubmit)="login()">
+				<div class="field">
+					<label> USERNAME </label>
+					<input type="text" name="username" placeholder="username" autocomplete="off">
+				</div>
+				<div class="field">
+					<label> PASSWORD </label>
+					<input type="password" name="password" placeholder="password" autocomplete="off">
+				</div>
+				<button class="ui black button fluid submit" id="button-login"> LOGIN </button>
+			</form>
+		</div>
+
+		<div class="ui basic segment left aligned" style="padding: 0;">
+			<div class="ui error message hidden" id="message">
+				<i class="warning sign icon"></i>
+				{{ errorMessage }}
+			</div>
+		</div>
+	</div>
+</div>

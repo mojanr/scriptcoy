@@ -1,0 +1,91 @@
+<div class="ui basic segment" id="header-reset">
+	<div class="ui stackable equal width grid middle aligned">
+		<div class="column">
+			<h3 class="ui header">
+				<div class="content">
+					Pesanan
+					<div class="sub header"> <i> Data pesanan </i> </div>
+				</div>
+			</h3>
+		</div>
+		<div class="column">
+			<a class="ui black button right floated small" style="visibility: hidden;"> Tambah Data Baru </a>
+		</div>
+	</div>
+</div>
+
+<div class="ui segment">
+	<div class="ui transparent left icon input fluid large" id="cari-data">
+		<input type="text" placeholder="Cari data ..." [ngModel]="dataCari" (ngModelChange)="cariData($event)">
+		<i class="search link icon"></i>
+	</div>
+</div>
+
+<div class="ui segment">
+	<table class="ui basic selectable small table">
+		<thead>
+			<tr>
+				<th class="one wide"> ID Pesanan </th>
+				<th class="two wide"> Nama Pemesan </th>
+				<th class="two wide"> No Telp </th>
+				<th class="two wide"> Email </th>
+				<!-- <th class="two wide"> Alamat </th> -->
+				<th class="one wide"> Tgl Pesan </th>
+				<th class="one wide"> Deadline </th>
+				<th class="one wide"> Status </th>
+				<!-- <th class="one wide"> Total Harga </th> -->
+				<th class="center aligned three wide"> Action </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngIf="data.length == 0">
+				<td colspan="8" class="center aligned">
+					<div class="ui basic segment">
+						<h4 class="ui header"> Tidak ada data yang dapat ditemukan pada database! </h4>
+					</div>
+				</td>
+			</tr>
+		
+			<tr *ngFor="let item of data">
+				<td> {{ item.idPesanan }} </td>
+				<td> {{ item.namaPemesan }} </td>
+				<td> {{ item.noTelp }} </td>
+				<td> {{ item.email }} </td>
+				<!-- <td> {{ item.alamat }} </td> -->
+				<td> {{ item.tglPesan }} </td>
+				<td> {{ item.tglDeadline }} </td>
+				<td>
+					<label class="ui label" [ngClass]="item.status == 'Menunggu Konfirmasi'? 'yellow' : item.status == 'Sudah Dikonfirmasi'? 'green': 'red'"> {{ item.status }} </label>
+				</td>
+				<!-- <td> Rp. {{ item.totalHarga | number:'1.2-2' }} </td> -->
+				<td class="center aligned">
+					<div class="ui black button small icon" routerLink="/menu-utama/pesanan/detail/{{item.idPesanan}}">
+						<i class="icon eye"> </i> detail
+					</div>
+					<div class="ui black button small icon" (click)="modalUbahStatus(item)" id="button-ubah-status">
+						<i class="icon edit"></i> ubah status
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="ui small modal" id="ubah-status-data">
+	<div class="header"> 
+		<span> Ubah Status Pemesanan </span>
+	</div>
+	<div class="content">
+		<select class="ui search selection dropdown" name="status" id="dropdown-status"> 
+			<option value=""> Status </option>
+			<option value="Menunggu Konfirmasi"> Menunggu Konfirmasi </option>
+			<option value="Sudah Dikonfirmasi"> Sudah Dikonfirmasi </option>
+			<option value="Batal"> Batal </option>
+		</select>
+	</div>
+	<div class="actions">
+		<!-- button simpan data -->
+		<div class="ui black button" (click)="ubahStatus()" id="button-ubah"> Simpan </div>
+		<div class="ui black button cancel"> Batal </div>
+	</div>
+</div>

@@ -1,0 +1,782 @@
+<!-- <div class="ui large image" id="coba-snapshot" style="position: fixed; z-index: 9; top: 10px; right: 10px; width: 200px; height: auto;">
+	
+</div>
+ -->
+<div class="ui top attached very padded segment basic" id="menu-set-padding">
+	<div class="ui secondary menu">
+		<!-- <div class="item" (click)="snapshot()"> snapshot </div> -->
+	</div>
+</div>
+
+<div class="ui bottom attached pushable" style="height: calc(100% - 60px);">
+	<!-- left sidebar -->
+	<div class="ui thin left sidebar vertical menu visible" id="sidebar-part">
+		<!-- <a class="item" (click)="snapshot()"> snapshot </a> -->
+		<a class="item orange" (click)="openSetting('generalOptions')"> 
+			<h4 class="ui header"> General Options</h4>
+		</a>
+	  <a class="item orange" (click)="openSetting('neckDanHeadstock')"> 
+	  	<h4 class="ui header"> Neck And Headstock </h4>
+	  </a>
+	  <a class="item orange" (click)="openSetting('logo')">
+	  	<h4 class="ui header"> Headstock Logo </h4>
+		</a>
+	  <a class="item orange" (click)="openSetting('fingerboard')"> 
+	  	<h4 class="ui header"> Fingerboard </h4>
+	  </a>
+	  <a class="item orange" (click)="openSetting('inlay')"> 
+	  	<h4 class="ui header"> Inlay </h4>
+	 	</a>
+	  <a class="item orange" (click)="openSetting('body')"> 
+	  	<h4 class="ui header"> Body </h4>
+	  </a>
+	  <a class="item orange" (click)="openSetting('pickguard')"> 
+	  	<h4 class="ui header"> Pickguard </h4>
+	  </a>
+	  <a class="item orange" (click)="openSetting('bridge')"> 
+	  	<h4 class="ui header"> Bridge </h4>
+	  </a>
+	  <a class="item orange" (click)="openSetting('rosette')">
+	  	<h4 class="ui header"> Rosette </h4>
+	  </a>
+	  <a class="item orange" (click)="openSetting('tuningMachine')">
+	  	<h4 class="ui header"> Tuning Machine </h4>
+	  </a>
+	  <a class="item orange" (click)="openSetting('string')">
+	  	<h4 class="ui header"> String </h4>
+	  </a>
+	  <!-- <a class="item"> 
+	  	<h4 class="ui header"> Components </h4>
+	  </a> -->
+	</div>
+
+	<!-- pusher menu part gitar -->
+	<div class="pusher" id="pusher-1">
+		<!-- sidebar options -->
+		<div class="ui left wide sidebar vertical menu" id="sidebar-setting">
+
+			<!-- neck dan headstock setting -->
+			<div [hidden]="!setting.generalOptions">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> General Options </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- neck dan headstock model -->
+				<div class="item">
+					<h4> Guitar Orientation </h4>
+					<!-- <div class="ui tiny image" id="img" 
+						*ngFor="let item of data.neckDanHeadstock.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('neckDanHeadstock', item)"
+						data-variation="tiny"
+						(click)="setModel('neckDanHeadstock', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div> -->
+					<!-- left handed -->
+					<div class="ui tiny image" id="img" 
+						data-html="<h5> Left Handed </h5>"
+						data-id="lh"
+						data-variation="tiny"
+						(click)="setOrientation('left handed')">
+						<img class="ui tiny image" src="./assets/Orientation - Left Handed.svg">
+					</div>
+					<!-- right handed -->
+					<div class="ui tiny image" id="img" 
+						data-html="<h5> Right Handed </h5>"
+						data-id="rh"
+						data-variation="tiny"
+						(click)="setOrientation('right handed')">
+						<img class="ui tiny image" src="./assets/Orientation - Right Handed.svg">
+					</div>
+				</div>
+				<!-- guitar finish -->
+				<div class="item">
+					<h4> Guitar Finish </h4>
+					<div class="ui selection dropdown fluid" id="guitar-finishing">
+						<input type="hidden" name="finish">
+						<i class="dropdown icon"></i>
+						<div class="default text">Finish</div>
+						<div class="menu">
+							<div class="item" data-value="Gloss"> Gloss </div>
+							<div class="item" data-value="Satin"> Satin </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- neck dan headstock setting -->
+			<div [hidden]="!setting.neckDanHeadstock">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Neck And Headstock </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- neck dan headstock model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.neckDanHeadstock.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('neckDanHeadstock', item)"
+						data-variation="tiny"
+						(click)="setModel('neckDanHeadstock', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+				<!-- neck dan headstock bahan -->
+				<div class="item">
+					<h4> Choose Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.neckDanHeadstock.bahan; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('neckDanHeadstock', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- logo setting -->
+			<div [hidden]="!setting.logo">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Headstock Logo </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- logo model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						[attr.data-html]="popupHelper('No Logo', '0')"
+						data-id="logoNull"
+						data-variation="tiny"
+						(click)="setModel('logo', null)">
+						<img class="ui tiny image" src="./assets/No Logo.svg">
+					</div>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.logo.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('logo', item)"
+						data-variation="tiny"
+						(click)="setModel('logo', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+				<!-- logo bahan -->
+				<div class="item">
+					<h4> Choose Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.logo.bahan; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('logo', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- fingerboard setting -->
+			<div [hidden]="!setting.fingerboard">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Fingerboard </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- fingerboard model -->
+				<!-- <div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.pickguard.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						data-variation="tiny"
+						(click)="setModel('pickguard', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div> -->
+				<!-- fingerboard bahan -->
+				<div class="item">
+					<h4> Choose Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.fingerboard.bahan; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						[ngClass]="imgActiveHelper('fingerboard', item)"
+						data-variation="tiny"
+						(click)="setBahan('fingerboard', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- inlay setting -->
+			<div [hidden]="!setting.inlay">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Inlay </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- inlay model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						[attr.data-html]="popupHelper('No Inlay', '0')"
+						data-id="inlayNull"
+						data-variation="tiny"
+						(click)="setModel('inlay', null)">
+						<img class="ui tiny image" src="./assets/No Inlay.svg">
+					</div>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.inlay.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('inlay', item)"
+						data-variation="tiny"
+						(click)="setModel('inlay', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+				<!-- inlay bahan -->
+				<div class="item">
+					<h4> Choose Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.inlay.bahan; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('inlay', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- body setting -->
+			<div [hidden]="!setting.body">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Body </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- body model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.body.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('body', item)"
+						data-variation="tiny"
+						(click)="setModel('body', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+				<!-- body top bahan -->
+				<div class="item">
+					<h4> Choose Top Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.body.bahan.top; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('top', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+				<!-- body side dan back bahan -->
+				<div class="item">
+					<h4> Choose Side And Back Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.body.bahan.sideDanBack; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('sideDanBack', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+				<!-- body binding bahan -->
+				<div class="item">
+					<h4> Choose Binding Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.body.bahan.binding; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('binding', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- pickguard setting -->
+			<div [hidden]="!setting.pickguard">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Pickguard </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- pickguard model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						[attr.data-html]="popupHelper('No Pickguard', '0')"
+						data-id="pickguardNull"
+						data-variation="tiny"
+						(click)="setModel('pickguard', null)">
+						<img class="ui tiny image" src="./assets/No Pickguard.svg">
+					</div>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.pickguard.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('pickguard', item)"
+						data-variation="tiny"
+						(click)="setModel('pickguard', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+				<!-- pickguard bahan -->
+				<div class="item">
+					<h4> Choose Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.pickguard.bahan; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('pickguard', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- bridge setting -->
+			<div [hidden]="!setting.bridge">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Bridge </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- bridge model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.bridge.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('bridge', item)"
+						data-variation="tiny"
+						(click)="setModel('bridge', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+				<!-- bridge bahan -->
+				<div class="item">
+					<h4> Choose Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.bridge.bahan; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('bridge', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- rosette setting -->
+			<div [hidden]="!setting.rosette">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Rosette </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- rosette model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						[attr.data-html]="popupHelper('No Rosette', '0')"
+						data-id="rosetteNull"
+						data-variation="tiny"
+						(click)="setModel('rosette', null)">
+						<img class="ui tiny image" src="./assets/No Rosette.svg">
+					</div>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.rosette.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('rosette', item)"
+						data-variation="tiny"
+						(click)="setModel('rosette', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+				<!-- rosette bahan -->
+				<div class="item">
+					<h4> Choose Material </h4>
+					<div class="ui tiny circular image" id="img" 
+						*ngFor="let item of data.rosette.bahan; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaBahan, item.hargaBahan)"
+						[attr.data-id]="item.idBahan"
+						data-variation="tiny"
+						(click)="setBahan('rosette', item)">
+						<img [src]="item.gambarBahan">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- string setting -->
+			<div [hidden]="!setting.string">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> String </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- string model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.string.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('string', item)"
+						data-variation="tiny"
+						(click)="setModel('string', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+			</div>
+
+			<!-- tuning machine setting -->
+			<div [hidden]="!setting.tuningMachine">
+				<a class="item" (click)="closeSetting()">
+					<div class="ui equal width grid middle aligned">
+						<div class="column"> <h3 class="ui header orange"> Tuning Machine </h3> </div>
+						<div class="column right aligned"> <i class="icon large close orange"></i> </div>
+					</div>
+				</a>
+				<!-- tuning machine model -->
+				<div class="item">
+					<h4> Choose Model </h4>
+					<div class="ui tiny image" id="img" 
+						*ngFor="let item of data.tuningMachine.model; first as isFirst; last as isLast" 
+						[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+						[attr.data-id]="item.idModel"
+						[ngClass]="imgActiveHelper('tuningMachine', item)"
+						data-variation="tiny"
+						(click)="setModel('tuningMachine', item)">
+						<img class="ui tiny image" [src]="item.gambarModel">
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+		<!-- pusher content -->
+		<div class="pusher" id="pusher-2">
+			<!-- <div class="ui grid equal width stackable bottom aligned">
+				<div class="column five wide tablet four wide computer">
+				</div>
+				<div class="column six wide tablet eight wide computer">
+					<div class="ui basic segment center aligned">
+						<div class="ui button icon" (click)="setView('back')" data-tooltip="View Back">
+							<i class="icon eye"></i>
+						</div>
+						<div class="ui button icon" (click)="setView('front')" data-tooltip="View Front">
+							<i class="icon eye"></i>
+						</div>
+						<div class="ui button icon" (click)="setView('side')" data-tooltip="View Side">
+							<i class="icon eye"></i>
+						</div>
+					</div>
+				</div>
+				<div class="column five wide tablet four wide computer">
+					<div class="ui basic segment center aligned">
+						<h4> Rp. {{ totalHarga | number:'1.2-2' }} </h4>
+						<div class="ui button orange fluid" (click)="openModalPesan()"> Order </div>
+					</div>
+				</div>
+			</div> -->
+
+			<div id="view">
+				<div class="ui basic vertical segment">
+					<a class="ui tiny image bordered" (click)="setView('back')" data-tooltip="View Back" data-position="left center" id="view-back">
+						<img class="ui tiny image bordered" src="./assets/view-back.png">
+					</a>
+					<!-- <div class="ui button icon" (click)="setView('back')" data-tooltip="View Back" data-position="left center">
+						<i class="icon eye"></i>
+					</div> -->
+				</div>
+				<div class="ui basic vertical segment">
+					<a class="ui tiny image bordered" (click)="setView('front')" data-tooltip="View Front" data-position="left center" id="view-front">
+						<img class="ui tiny image bordered" src="./assets/view-front.png">
+					</a>
+					<!-- <div class="ui button icon" (click)="setView('front')" data-tooltip="View Front" data-position="left center">
+						<i class="icon eye"></i>
+					</div> -->
+				</div>
+				<div class="ui basic vertical segment">
+					<a class="ui tiny image bordered" (click)="setView('side')" data-tooltip="View Side" data-position="left center" id="view-side">
+						<img class="ui tiny image bordered" src="./assets/view-side.png">
+					</a>
+					<!-- <div class="ui button icon" (click)="setView('side')" data-tooltip="View Side" data-position="left center">
+						<i class="icon eye"></i>
+					</div> -->
+				</div>
+			</div>
+
+			<div class="ui basic segment center aligned" id="total-harga">
+				<h4> Rp. {{ totalHarga | number:'1.2-2' }} </h4>
+				<div class="ui button orange fluid" (click)="openModalPesan()"> Order </div>
+			</div>
+
+			<!-- canvas -->
+			<div class="ui segment vertical" id="content-3d-segment" #canvas (click)="canvasClick($event)"></div>
+			<!-- <div class="ui segment vertical" id="content-3d-segment" #canvasSnapshot style="z-index: 0;"></div> -->
+		</div>
+	</div>
+</div>	
+
+
+<!-- modal -->
+<!-- <div class="ui small modal" id="base-model-modal">
+	<div class="header"> 
+		Select Base Model
+	</div>
+	<div class="scrolling content">
+		<div class="ui four cards">
+			<div class="card" id="card" *ngFor="let item of data.body.model" (click)="setBaseModel(item)">
+				<div class="image">
+					<img [src]="item.gambarModel">
+				</div>
+				<div class="content">
+					<div class="meta">
+						{{ item.namaModel }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<div class="ui small modal" id="base-model-modal">
+	<div class="header"> 
+		Select Base Model
+	</div>
+	<div class="scrolling content">
+		<div class="ui images">
+			<div class="ui small image" id="img"
+				*ngFor="let item of data.body.model; first as isFirst; last as isLast" 
+				[attr.data-html]="popupHelper(item.namaModel, item.hargaModel)"
+				[attr.data-id]="item.idModel"
+				data-variation="small"
+				(click)="setBaseModel('body', item)">
+				<img class="ui small image" [src]="item.gambarModel">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- form pesan -->
+<!-- modal -->
+<div class="ui large modal" id="pemesanan-modal">
+	<!-- header -->
+	<div class="header"> 
+		Order
+	</div>
+	<!-- content -->
+	<div class="content scrolling">
+		<div class="ui top attached tabular menu" id="tab-order">
+			<a class="active item" data-tab="first"> Form Order </a>
+		  <a class="item" data-tab="second"> Guitar Specifications </a>
+		  <a class="item" data-tab="third"> Guitar Image </a>
+		</div>
+		<div class="ui bottom attached active tab segment" data-tab="first">
+		  <form id="form-pemesanan" class="ui form" onsubmit="return false;" (ngSubmit)="pesan()"> 
+				<div class="field">
+					<label> Name </label>
+					<input type="text" name="namaPemesan" placeholder="Name" autocomplete="off">
+				</div>
+				<div class="field">
+					<label> Phone Number </label>
+					<input type="text" name="noTelp" placeholder="Phone Number" autocomplete="off">
+				</div>
+				<div class="field">
+					<label> Email </label>
+					<input type="text" name="email" placeholder="Email" autocomplete="off">
+				</div>
+				<div class="field">
+					<label> Address </label>
+					<textarea rows="4" name="alamat" placeholder="Address" autocomplete="off"></textarea>
+				</div>
+				<div class="field">
+					<select class="ui search selection dropdown" name="lamaPembuatan" id="lama-pembuatan"> 
+						<option value=""> Guitar Build </option>
+						<option value="+1 month"> 1 Month </option>
+						<option value="+2 month" selected=""> 2 Month </option>
+					</select>
+				</div>
+				<button style="visibility: hidden; display: none;" id="button-simpan"></button>
+				<div class="ui error message" id="hidden-message"></div>
+			</form>
+		</div>
+		<div class="ui bottom attached tab segment" data-tab="second">
+		  <table class="ui structured small compact equal width celled table middle aligned center aligned">
+				<!-- <thead>
+					<tr>
+						<th class="seven wide"> asdf </th>
+						<th class="nine wide"> asdf </th>
+					</tr>
+				</thead> -->
+				<tbody>
+					<!-- info gitar -->
+					<tr class="active">
+						<td colspan="4"> <h5 class="ui header"> Guitar Specification </h5> </td>
+					</tr>
+
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Guitar Model </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.body.model) }} </td>
+					</tr>
+					<tr >
+						<td rowspan="3"> <h5 class="ui header"> Body </h5> </td>
+						<td> <h5 class="ui header"> Top </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.body.bahan.top) }} </td>
+					</tr>
+					<tr>
+						<td> <h5 class="ui header"> Side And Back </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.body.bahan.sideDanBack) }} </td>
+					</tr>
+					<tr>
+						<td> <h5 class="ui header"> Binding </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.body.bahan.binding) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Neck And Headstock </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.neckDanHeadstock.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.neckDanHeadstock.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Fingerboard </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.fingerboard.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.fingerboard.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Pickguard </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.pickguard.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.pickguard.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Bridge </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.bridge.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.bridge.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Inlay </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.inlay.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.inlay.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Rosette </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.rosette.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.rosette.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Logo </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.logo.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.logo.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Tuning Machine </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.tuningMachine.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> String </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.string.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Fret </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.fret.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Saddle </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.saddle.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Nut </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.nut.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Finishing </h5> </td>
+						<td colspan="2"> {{ info.finishing }} </td>
+					</tr>
+
+					<!-- info pemesan -->
+					<tr class="active">
+						<td colspan="4"> <h5 class="ui header"> Order </h5> </td>
+					</tr>
+
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Total </h5> </td>
+						<td colspan="2"> Rp.  {{ info.totalHarga | number:'1.2-2' }} </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="ui bottom attached tab segment" data-tab="third">
+		  <div class="ui image" id="snapshot-img"></div>
+		</div>
+
+	</div>
+
+	<div class="ui basic segment">
+		<div class="ui equal width grid middle aligned">
+			<div class="column left aligned ten wide" style="min-height: 50px;">
+				<div class="ui message" *ngIf="message.show" [ngClass]="message.status? 'success': 'error'"> {{ message.message }} </div>
+			</div>
+			<div class="column right aligned">
+				<div class="ui black button" id="submit-order" (click)="pesan()"> Submit </div>
+				<div class="ui black button cancel" (click)="closePemesananModel()"> Close </div>
+			</div>
+		</div>
+	</div>
+
+	<!-- actions -->
+	<!-- <div class="actions">
+		button simpan data
+	</div> -->
+</div>

@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+	background: rgb(220, 220, 220) !important;
+}
+
+#header-reset {
+	margin-bottom: 0; 
+	padding-left: 0; 
+	padding-right: 0; 
+	padding-bottom: 0;
+}
+
+#hidden-message {
+	visibility: hidden;
+	display: none;
+}

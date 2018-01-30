@@ -1,0 +1,94 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "admin"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "../node_modules/semantic-ui-css/components/reset.min.css",
+        "../node_modules/semantic-ui-css/components/site.min.css",
+        "../node_modules/semantic-ui-css/components/sidebar.min.css",
+        "../node_modules/semantic-ui-css/components/item.min.css",
+        "../node_modules/semantic-ui-css/components/menu.min.css",
+        "../node_modules/semantic-ui-css/components/image.min.css",
+        "../node_modules/semantic-ui-css/components/grid.min.css",
+        "../node_modules/semantic-ui-css/components/form.min.css",
+        "../node_modules/semantic-ui-css/components/segment.min.css",
+        "../node_modules/semantic-ui-css/components/modal.min.css",
+        "../node_modules/semantic-ui-css/components/dimmer.min.css",
+        "../node_modules/semantic-ui-css/components/popup.min.css",
+        "../node_modules/semantic-ui-css/components/dropdown.min.css",
+        "../node_modules/semantic-ui-css/components/message.min.css",
+        "../node_modules/semantic-ui-css/components/transition.min.css",
+        "../node_modules/semantic-ui-css/components/button.min.css",
+        "../node_modules/semantic-ui-css/components/header.min.css",
+        "../node_modules/semantic-ui-css/components/table.min.css",
+        "../node_modules/semantic-ui-css/components/tab.min.css",
+        "../node_modules/semantic-ui-css/components/icon.min.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/semantic-ui-css/components/site.min.js",
+        "../node_modules/semantic-ui-css/components/sidebar.min.js",
+        "../node_modules/semantic-ui-css/components/form.min.js",
+        "../node_modules/semantic-ui-css/components/modal.min.js",
+        "../node_modules/semantic-ui-css/components/dropdown.min.js",
+        "../node_modules/semantic-ui-css/components/dimmer.min.js",
+        "../node_modules/semantic-ui-css/components/popup.min.js",
+        "../node_modules/semantic-ui-css/components/tab.min.js",
+        "../node_modules/semantic-ui-css/components/transition.min.js",
+        "../node_modules/three/build/three.min.js",
+        "../node_modules/three/examples/js/controls/TrackballControls.js",
+        "../node_modules/three/examples/js/loaders/GLTFLoader.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

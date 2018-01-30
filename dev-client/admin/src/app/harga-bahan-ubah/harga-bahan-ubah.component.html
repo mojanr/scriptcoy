@@ -1,0 +1,83 @@
+<div class="ui basic segment" id="header-reset">
+	<div class="ui stackable equal width grid middle aligned">
+		<div class="column">
+			<h3 class="ui header">
+				<div class="content">
+					Harga Bahan / Ubah Data Harga Bahan
+					<div class="sub header"> <i> Ubah data harga bahan/texture setiap bagian gitar </i> </div>
+				</div>
+			</h3>
+		</div>
+		<div class="column">
+			<a class="ui black button right floated small" routerLink="/menu-utama/model3d/tambah-data" style="visibility: hidden;"> Tambah Data Baru </a>
+		</div>
+	</div>
+</div>
+
+<div class="ui segment">
+	<form id="form-ubah-data-harga-bahan" class="ui form" onsubmit="return false;" (ngSubmit)="simpan()"> 
+		<div class="ui three column grid stackable">
+			<div class="column seven wide">
+				<h4 class="ui header"> Data Harga Bahan </h4>
+				<div class="ui divider"></div>
+				<div class="field">
+					<label> ID Harga Bahan </label>
+					<input type="text" name="idHargaBahan" placeholder="ID Harga Bahan" readonly="" autocomplete="off">
+				</div>
+				<div class="field">
+					<label> Bagian Gitar </label>
+					<select class="ui search selection dropdown" name="bagianGitar" id="bagian-gitar"> 
+						<option value=""> Bagian Gitar </option>
+						<option value="Logo"> Logo </option>
+						<option value="Neck Dan Headstock"> Neck Dan Headstock </option>
+						<option value="Fingerboard"> Fingerboard </option>
+						<option value="Inlay"> Inlay </option>
+						<option value="Body Top"> Body Top </option>
+						<option value="Body Side Dan Back"> Body Side Dan Back </option>
+						<option value="Body Binding"> Body Binding </option>
+						<option value="Rosette"> Rosette </option>
+						<option value="Pickguard"> Pickguard </option>
+						<option value="Bridge"> Bridge </option>
+					</select>
+				</div>
+
+				<div class="fields">
+					<div class="field nine wide">
+						<label> Bahan </label>
+						<select class="ui search selection dropdown" name="idBahan" id="bahan"> 
+							<option value=""> Bahan </option>
+							<option *ngFor="let item of data" [value]="item.idBahan"> <img class="ui mini image circular" [src]="item.gambarBahan" style="display: inline-block;"> &nbsp; {{ item.namaBahan }} </option>
+						</select>
+					</div>
+					<div class="field seven wide">
+						<label> Harga </label>
+						<input type="number" min="0" name="hargaBahan" placeholder="Harga Bahan" autocomplete="off">
+					</div>
+					<!-- <div class="field">
+						<label> &nbsp; </label>
+						<div class="ui black button icon circular">
+							<i class="icon plus"></i>
+						</div>
+					</div>
+					<div *ngIf="i > 0; then true else false">
+						<div class="field">
+							<label> &nbsp; </label>
+							<div class="ui black button icon circular">
+								<i class="icon close"></i>
+							</div>
+						</div>
+					</div> -->
+				</div>
+
+			</div>
+		</div>
+		<button style="visibility: hidden; display: none;" id="button-simpan"></button>
+		<div class="ui error message" id="hidden-message"></div>
+	</form>
+
+	<div class="ui basic segment" style="padding-left: 0; padding-right: 0;">
+		<!-- <div class="ui divider"></div> -->
+		<div class="ui black button" id="simpan-ubah-data-harga-bahan"> Simpan </div>
+		<div class="ui black button" routerLink="/menu-utama/harga-bahan"> Kembali </div>
+	</div>
+</div>

@@ -1,0 +1,205 @@
+<div class="ui basic segment" id="header-reset">
+	<div class="ui stackable equal width grid middle aligned">
+		<div class="column">
+			<h3 class="ui header">
+				<div class="content">
+					Detail Pesanan
+					<div class="sub header"> <i> Detail Pemesanan </i> </div>
+				</div>
+			</h3>
+		</div>
+		<div class="column">
+			<a class="ui black button right floated small" style="visibility: hidden;"> Tambah Data Baru </a>
+		</div>
+	</div>
+</div>
+
+<div class="ui segment">
+	<div class="ui equal width grid stackable">
+		<div class="column">
+			<h4 class="ui header"> Spesifikasi Gitar </h4>
+			<table class="ui structured small compact equal width celled table middle aligned center aligned">
+				<!-- <thead>
+					<tr>
+						<th class="seven wide"> asdf </th>
+						<th class="nine wide"> asdf </th>
+					</tr>
+				</thead> -->
+				<tbody>
+					<!-- id dan tanggal pemesanan -->
+					<tr>
+						<td colspan="2" class="five wide"> <h5 class="ui header"> No Seri </h5> </td>
+						<td colspan="2"> {{ data.idPesanan }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Tanggal Pesan </h5> </td>
+						<td colspan="2"> {{ data.tglPesan }} </td>
+					</tr>
+
+					<!-- info pemesan -->
+					<tr class="active">
+						<td colspan="4"> <h5 class="ui header"> Data Pemesan </h5> </td>
+					</tr>
+
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Nama </h5> </td>
+						<td colspan="2"> {{ data.namaPemesan }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Alamat Lengkap </h5> </td>
+						<td colspan="2"> {{ data.alamat }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> No Telp </h5> </td>
+						<td colspan="2"> {{ data.noTelp }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Email </h5> </td>
+						<td colspan="2"> {{ data.email }} </td>
+					</tr>
+
+					<!-- info gitar -->
+					<tr class="active">
+						<td colspan="4"> <h5 class="ui header"> Data Gitar </h5> </td>
+					</tr>
+
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Model Gitar </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.body.model) }} </td>
+					</tr>
+					<tr >
+						<td rowspan="3"> <h5 class="ui header"> Body </h5> </td>
+						<td> <h5 class="ui header"> Top </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.body.bahan.top) }} </td>
+					</tr>
+					<tr>
+						<td> <h5 class="ui header"> Side Dan Back </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.body.bahan.sideDanBack) }} </td>
+					</tr>
+					<tr>
+						<td> <h5 class="ui header"> Binding </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.body.bahan.binding) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Neck Dan Headstock </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.neckDanHeadstock.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.neckDanHeadstock.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Fingerboard </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.fingerboard.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.fingerboard.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Pickguard </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.pickguard.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.pickguard.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Bridge </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.bridge.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.bridge.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Inlay </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.inlay.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.inlay.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Rosette </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.rosette.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.rosette.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Logo </h5> </td>
+						<td> {{ dataGitarHelper(info.gitar.logo.model) }} </td>
+						<td> {{ dataGitarHelper(info.gitar.logo.bahan) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Tuning Machine </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.tuningMachine.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> String </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.string.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Fret </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.fret.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Saddle </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.saddle.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Nut </h5> </td>
+						<td colspan="2"> {{ dataGitarHelper(info.gitar.nut.model) }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Finishing </h5> </td>
+						<td colspan="2"> {{ data.finishing }} </td>
+					</tr>
+
+					<!-- info pemesan -->
+					<tr class="active">
+						<td colspan="4"> <h5 class="ui header"> Pemesanan </h5> </td>
+					</tr>
+
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Total Harga </h5> </td>
+						<td colspan="2"> Rp.  {{ data.totalHarga | number:'1.2-2' }} </td>
+					</tr>
+					<tr>
+						<td colspan="2"> <h5 class="ui header"> Deadline </h5> </td>
+						<td colspan="2"> {{ data.tglDeadline }} </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="column">
+			<h4 class="ui header"> Model Gitar </h4>
+			<div class="ui segment" id="content-3d-segment" #canvas></div>
+		</div>
+	</div>
+	<!-- <table class="ui basic selectable small table">
+		<thead>
+			<tr>
+				<th class="one wide"> ID Pesanan </th>
+				<th class="two wide"> Nama Pemesan </th>
+				<th class="two wide"> No Telp </th>
+				<th class="two wide"> Email </th>
+				<th class="two wide"> Alamat </th>
+				<th class="one wide"> Tgl Pesan </th>
+				<th class="one wide"> Deadline </th>
+				<th class="one wide"> Status </th>
+				<th class="one wide"> Total Harga </th>
+				<th class="center aligned three wide"> Action </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of data">
+				<td> {{ item.idPesanan }} </td>
+				<td> {{ item.namaPemesan }} </td>
+				<td> {{ item.noTelp }} </td>
+				<td> {{ item.email }} </td>
+				<td> {{ item.alamat }} </td>
+				<td> {{ item.tglPesan }} </td>
+				<td> {{ item.tglDeadline }} </td>
+				<td> {{ item.status }} </td>
+				<td> {{ item.totalHarga }} </td>
+				<td class="center aligned">
+					<div class="ui black button small icon  circular" routerLink="/menu-utama/pesanan/detail/{{item.idPesanan}}">
+						<i class="icon eye"></i>
+					</div>
+					<div class="ui black button small icon circular" (click)="ubahStatus(item)" id="button-ubah-status">
+						<i class="icon edit"></i> ubah status
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table> -->
+
+	<div class="ui basic segment" style="padding-left: 0; padding-right: 0;">
+		<div class="ui black button" routerLink="/menu-utama/pesanan"> Kembali </div>
+	</div>
+</div>
